@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Listado de clientes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="bookmark-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let cliente of clientes" class="cliente-item">
+      <ion-avatar slot="start" class="avatar-cliente">
+        <div class="avatar-inicial">{{ cliente.imagenPerfil }}</div>
+      </ion-avatar>
+      
+      <ion-label class="nombre-cliente">
+        {{ cliente.nombre }}
+      </ion-label>
+      
+      <div slot="end" class="saldo-container">
+        <div class="saldo-valor">
+          {{ formatearMoneda(cliente.saldo) }}
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

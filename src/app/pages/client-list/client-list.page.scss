@@ -1,0 +1,116 @@
+ion-header {
+  ion-toolbar {
+    --background: #ffffff;
+    --color: #333333;
+    
+    ion-title {
+      font-weight: 600;
+      font-size: 18px;
+    }
+  }
+}
+
+ion-content {
+  --background: #ffffff;
+  
+  ion-list {
+    background: transparent;
+    padding: 0;
+    
+    .cliente-item {
+      --background: #ffffff;
+      --border-color: #f0f0f0;
+      --padding-start: 16px;
+      --padding-end: 16px;
+      --min-height: 72px;
+      
+      .avatar-cliente {
+        width: 48px;
+        height: 48px;
+        margin-right: 12px;
+        
+        .avatar-inicial {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #8b5cf6, #a855f7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #ffffff;
+          font-weight: 600;
+          font-size: 18px;
+          text-transform: uppercase;
+        }
+      }
+      
+      .nombre-cliente {
+        font-size: 16px;
+        font-weight: 500;
+        color: #333333;
+        margin: 0;
+      }
+      
+      .saldo-container {
+        .saldo-valor {
+          background: linear-gradient(135deg, #f97316, #ea580c);
+          color: #ffffff;
+          padding: 8px 12px;
+          border-radius: 8px;
+          font-weight: 600;
+          font-size: 14px;
+          min-width: 80px;
+          text-align: center;
+          box-shadow: 0 2px 4px rgba(249, 115, 22, 0.2);
+        }
+      }
+    }
+  }
+}
+
+// Estilos para el botón de regreso
+ion-back-button {
+  --color: #333333;
+}
+
+// Estilos para los botones del header
+ion-button {
+  --color: #333333;
+  
+  ion-icon {
+    font-size: 20px;
+  }
+}
+
+// Responsive para pantallas más pequeñas
+@media (max-width: 360px) {
+  ion-content {
+    ion-list {
+      .cliente-item {
+        --padding-start: 12px;
+        --padding-end: 12px;
+        
+        .avatar-cliente {
+          width: 40px;
+          height: 40px;
+          
+          .avatar-inicial {
+            font-size: 16px;
+          }
+        }
+        
+        .nombre-cliente {
+          font-size: 14px;
+        }
+        
+        .saldo-container {
+          .saldo-valor {
+            font-size: 12px;
+            padding: 6px 10px;
+            min-width: 70px;
+          }
+        }
+      }
+    }
+  }
+}

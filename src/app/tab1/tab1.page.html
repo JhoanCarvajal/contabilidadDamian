@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Contabilidad Damián
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,25 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Contabilidad Damián</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Gestión de Clientes</ion-card-title>
+        <ion-card-subtitle>Administra la información de tus clientes</ion-card-subtitle>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <p>Accede al listado completo de clientes con sus saldos y información de contacto.</p>
+        
+        <ion-button expand="block" routerLink="/client-list" class="btn-clientes">
+          <ion-icon name="people-outline" slot="start"></ion-icon>
+          Ver Listado de Clientes
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
