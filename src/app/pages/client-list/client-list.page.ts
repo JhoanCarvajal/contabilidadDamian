@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { 
   IonToolbar, 
   IonContent, 
@@ -29,6 +30,7 @@ interface Cliente {
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     IonToolbar, 
     IonContent, 
     IonHeader, 

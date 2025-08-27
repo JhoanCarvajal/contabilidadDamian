@@ -17,12 +17,22 @@ ion-content {
     background: transparent;
     padding: 0;
     
-    .cliente-item {
-      --background: #ffffff;
-      --border-color: #f0f0f0;
-      --padding-start: 16px;
-      --padding-end: 16px;
-      --min-height: 72px;
+          .cliente-item {
+        --background: #ffffff;
+        --border-color: #f0f0f0;
+        --padding-start: 16px;
+        --padding-end: 16px;
+        --min-height: 72px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        
+        &:hover {
+          --background: #f8f9fa;
+        }
+        
+        &:active {
+          --background: #e9ecef;
+        }
       
       .avatar-cliente {
         width: 48px;

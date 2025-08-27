@@ -17,7 +17,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item *ngFor="let cliente of clientes" class="cliente-item">
+    <ion-item *ngFor="let cliente of clientes" class="cliente-item" [routerLink]="['/client-detail', cliente.id]">
       <ion-avatar slot="start" class="avatar-cliente">
         <div class="avatar-inicial">{{ cliente.imagenPerfil }}</div>
       </ion-avatar>
