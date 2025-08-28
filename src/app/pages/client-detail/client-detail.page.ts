@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ViewChild } from '@angular/core';
 import { 
   IonToolbar, 
   IonContent, 
@@ -64,19 +65,13 @@ interface ClienteDetalle {
 export class ClientDetailPage implements OnInit {
 
   cliente: ClienteDetalle | null = null;
+  clientesDetalle: ClienteDetalle[] = [];
 
-  constructor(private route: ActivatedRoute) { }
+  @ViewChild(IonContent) ionContent!: IonContent;
 
-  ngOnInit() {
-    this.cargarCliente();
-  }
-
-  cargarCliente() {
-    // Obtener el ID del cliente de los parámetros de la ruta
-    const clienteId = Number(this.route.snapshot.paramMap.get('id'));
-    
+  constructor(private route: ActivatedRoute, private router: Router) {
     // Datos de ejemplo - en una aplicación real esto vendría de un servicio
-    const clientesDetalle: ClienteDetalle[] = [
+    this.clientesDetalle = [
       {
         id: 1,
         nombre: 'Juan Pérez',
@@ -146,8 +141,45 @@ export class ClientDetailPage implements OnInit {
         direccion: 'Carrera 45 #12-34, Bucaramanga'
       }
     ];
+  }
 
-    this.cliente = clientesDetalle.find(c => c.id === clienteId) || null;
+  ngOnInit() {
+    this.cargarCliente();
+  }
+
+  onScroll() {
+    console.log('Scroll detectado!');
+    
+    // Esperar un poco para que el DOM se actualice
+    setTimeout(async () => {
+      if (this.ionContent) {
+        const content = await this.ionContent.getScrollElement();
+        const scrollTop = content.scrollTop;
+        const scrollHeight = content.scrollHeight;
+        const clientHeight = content.clientHeight;
+
+        console.log('Scroll Top:', scrollTop);
+        console.log('Scroll Height:', scrollHeight);
+        console.log('Client Height:', clientHeight);
+
+        // Verificar si hemos llegado al final del scroll
+        if (scrollTop + clientHeight >= scrollHeight - 2) {
+          console.log('¡Llegamos al final del scroll!');
+          const clientIndex = this.clientesDetalle.findIndex(c => c.id === this.cliente?.id);
+          if (clientIndex < this.clientesDetalle.length - 1) {
+            this.router.navigate(['/client-detail', this.clientesDetalle[clientIndex + 1].id]);
+          }
+        }
+      }
+    }, 100);
+  }
+
+  cargarCliente() {
+    // Obtener el ID del cliente de los parámetros de la ruta
+    const clienteId = Number(this.route.snapshot.paramMap.get('id'));
+    
+
+    this.cliente = this.clientesDetalle.find(c => c.id === clienteId) || null;
   }
 
   formatearMoneda(valor: number): string {

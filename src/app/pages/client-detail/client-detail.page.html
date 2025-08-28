@@ -15,7 +15,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" *ngIf="cliente">
+<ion-content #content [fullscreen]="true" [scrollEvents]="true" *ngIf="cliente" (ionScroll)="onScroll()">
   <div class="perfil-container">
     <!-- Avatar del cliente -->
     <div class="avatar-container">
@@ -90,6 +90,9 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+  
+  <!-- Espacio adicional al final para efecto de resistencia -->
+  <div class="padding-bottom"></div>
 </ion-content>
 
 <!-- Mensaje si no se encuentra el cliente -->
